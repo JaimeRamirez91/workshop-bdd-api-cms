@@ -1,0 +1,47 @@
+{
+    "name":"cms",
+    "version":"1.0.0",
+    "location":"",
+    "author":"You",
+    "slug":"cms",
+    "createPackageDirectory":false,
+    "type":"mvc",
+    "homepage":"https://github.com/coldbox-templates/rest",
+    "documentation":"https://github.com/coldbox-templates/rest",
+    "repository":{
+        "type":"git",
+        "url":"https://github.com/coldbox-templates/rest"
+    },
+    "bugs":"https://github.com/coldbox-templates/rest/issues",
+    "shortDescription":"This template gives you the base for building RESTFul web services with ColdBox",
+    "contributors":[],
+    "ignore":[],
+    "devDependencies":{
+        "testbox":"^3.0.0",
+        "relax":"^4",
+        "commandbox-dotenv":"*",
+        "commandbox-cfconfig":"*",
+        "commandbox-cfformat":"*"
+    },
+    "installPaths":{
+        "coldbox":"coldbox/",
+        "testbox":"testbox/",
+        "relax":"modules/relax/",
+        "cbswagger":"modules/cbswagger/",
+        "route-visualizer":"modules/route-visualizer/",
+        "BCrypt":"modules/BCrypt/",
+        "mementifier":"modules/mementifier/",
+        "jwt":"modules/jwt/",
+        "cborm":"modules/cborm/"
+    },
+    "dependencies":{
+        "coldbox":"^5.0.0",
+        "cbswagger":"^2.0.0",
+        "route-visualizer":"^1.4.0+21",
+        "BCrypt":"^2.5.0-snapshot",
+        "mementifier":"^1.9.0+59",
+        "jwt":"^1.1.0",
+        "cborm":"^2.3.0+142"
+    },
+    "scripts":{}
+}

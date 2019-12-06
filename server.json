@@ -1,0 +1,11 @@
+{
+    "name":"workshop-bdd-api-cms",
+    "web":{
+        "http":{
+            "port":"42519"
+        },
+        "rewrites":{
+            "enable":true
+        }
+    }
+}
