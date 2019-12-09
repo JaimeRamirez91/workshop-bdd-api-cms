@@ -23,6 +23,8 @@ component{
 		get( "/api/echo", "Echo.index" );
 		resources( "sessions" );
 		resources( "registration" );
+		resources( "sessions" );
+		resources( "content" );
 		// Conventions based routing
 		route( ":handler/:action?" ).end();
 
