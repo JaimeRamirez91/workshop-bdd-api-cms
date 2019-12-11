@@ -24,7 +24,7 @@ component singleton accessors="true"{
 	*/
 	array function list( orderBy="publishedDate" ){
 		return queryExecute(
-			"SELECT * FROM content ORDER BY ?",
+			" SELECT * FROM content ORDER BY ? ",
 			[ arguments.orderBy ],
 			{
 				returnType : "array"
@@ -50,8 +50,7 @@ component singleton accessors="true"{
 	/**
 	* create
 	*/
-	function create( content ){
-		
+	function create( required content ){	
 		queryExecute( 
 			"
 				INSERT INTO `content` VALUES (?, ?, ?, ?, 0, CURRENT_TIMESTAMP,CURRENT_TIMESTAMP,CURRENT_TIMESTAMP,?)
@@ -69,6 +68,39 @@ component singleton accessors="true"{
 			}
 		);
     	return result.generatedKey;
+	}
+	/**
+	 * update
+	 *
+	 * @content 
+	 */
+	function update( required content ){	
+		queryExecute( 
+			"
+				UPDATE `content` SET `body` =  ?  WHERE `slug` = ?
+			",
+			[
+				arguments.content.getBody(),
+				arguments.content.getSlug()
+			],
+			{
+				result : "local.result"
+			}
+		);
+    	return result.recordcount;
+	}
+
+    /**
+	 * deleteBySlug
+	 * @contentSlug
+	 */
+	function deleteBySlug( required slug ){
+
+		queryExecute(
+			          "DELETE FROM content WHERE slug = ?", [ arguments.slug ],{ result = "local.result" }
+		);
+
+		return result.recordcount;   //RECORDCOUNT;
 	}
 
 }

@@ -63,6 +63,7 @@ component extends="coldbox.system.testing.BaseTestCase" {
 		story( "Quiero poder ver contenido con diferentes tipos de opciones", function(){
 
 			beforeEach(function( currentSpec ){
+
 				// Setup as a new ColdBox request for this suite, VERY IMPORTANT. ELSE EVERYTHING LOOKS LIKE THE SAME REQUEST.
 				setup();
 			});
@@ -85,9 +86,16 @@ component extends="coldbox.system.testing.BaseTestCase" {
 			});
 
 			it( "puedo borrar un contenido", function(){
+
+				var event = delete( route = "/content/prueba1" );
+				var response = event.getPrivateValue( "Response" );
+                expect( response.getError()).toBeFalse();
+				expect( response.getData()).toBeNumeric();
+
 			});
 
 			it( "crear un nuevo contenido", function(){
+
 				var event = post("/content", {
 					'id'                    = '50',
 					'slug'					= 'prueba1',
@@ -101,18 +109,17 @@ component extends="coldbox.system.testing.BaseTestCase" {
 				expect( response.getData()).toBeNumeric();
 			});
 
-			/*it( "editar un contenido", function(){
-				var event = execute( event="content.update", renderResults=true );
-				// expectations go here.
-				expect( false ).toBeTrue();
-			});*/
+			it( "editar un contenido", function(){
+				var event = patch("/content/17/", {
+					'slug'					= 'prueba1',
+					'body'                	= 'Modificado'
+				} );
 
-			/*it( "puedo borrar un contenido", function(){
-				var event = execute( event="content.delete", renderResults=true );
-				// expectations go here.
-				expect( false ).toBeTrue();
-			});*/
-
+				var response = event.getPrivateValue( "Response" );
+				//writeDump(response); abort;
+				expect( response.getError()).toBeFalse();
+				expect( response.getData()).toBeNumeric();	
+			});
 		
 		});
 

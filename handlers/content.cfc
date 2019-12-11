@@ -49,14 +49,24 @@ component extends="BaseHandler"{
 	* update
 	*/
 	function update( event, rc, prc ){
-		event.setView( "content/update" );
+		var oContent = populateModel( "Content" );
+		oContent.setSlug(rc.slug);
+		oContent.setBody(rc.body);
+		var response = contentService.update( oContent );
+		prc.response.setData( response );
 	}
 
 	/**
 	* delete
 	*/
 	function delete( event, rc, prc ){
-		event.setView( "content/delete" );
+		var response = contentService.deleteBySlug(rc.id);
+		if(response != 0){
+		  prc.response.setData(response);
+		}else{
+			prc.response.setError(true).addMessage("Registro no encontrado");	
+		}
+		
 	}
 
 
