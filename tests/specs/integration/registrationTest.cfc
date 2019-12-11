@@ -19,6 +19,7 @@ component extends="coldbox.system.testing.BaseTestCase" appMapping="/"{
 	/*********************************** LIFE CYCLE Methods ***********************************/
  
 	function beforeAll(){
+		
 		story( "Quiero eliminar un usuario de mi sistema cms", function(){
 			given( "Verificar existencia", function(){
 				then( "puedo eliminar un usuario", function(){
@@ -37,7 +38,6 @@ component extends="coldbox.system.testing.BaseTestCase" appMapping="/"{
 	}
 
 	function afterAll(){
-	
 	super.afterAll();
     }
 

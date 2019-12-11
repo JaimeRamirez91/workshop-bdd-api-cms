@@ -18,7 +18,7 @@
 --
 -- Table structure for table `cfmigrations`
 --
-
+create database cms;
 use `cms`;
 
 DROP TABLE IF EXISTS `cfmigrations`;

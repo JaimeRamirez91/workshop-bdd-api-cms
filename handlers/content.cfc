@@ -20,7 +20,19 @@ component extends="BaseHandler"{
 	* create
 	*/
 	function create( event, rc, prc ){
-		event.setView( "content/create" );
+		var oContent = populateModel( "Content" );
+		
+		oContent.setId(rc.id);
+		oContent.setSlug(rc.slug);
+		oContent.setTitle(rc.title);
+		oContent.setBody(rc.body);
+		oContent.setIsPublished(true);
+		oContent.setPublishedDate(now());
+		oContent.setCreatedDate(now());
+		oContent.setModifiedDate(now());
+		oContent.setUser(2);
+		var response = contentService.create(oContent);
+		prc.response.setData(response);
 	}
 
 	/**

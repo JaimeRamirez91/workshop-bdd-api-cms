@@ -14,18 +14,45 @@
 *	* eventArguments : The struct of args to pass to the event
 *	* renderResults : Render back the results of the event
 *******************************************************************************/
-component extends="tests.resources.BaseIntegrationSpec" {
+component extends="coldbox.system.testing.BaseTestCase" {
 	
 	/*********************************** LIFE CYCLE Methods ***********************************/
 
 	function beforeAll(){
+		/*story("Quiero agragar la data para pruebas", function(){
+			given( "Registros existenten", function(){
+				then( "puedo registrar los datos", function(){
+					// Pruebo que mi usuario no exista
+					expect( 
+						queryExecute( 
+							"select * from users where id > 1 or id < 11", 
+							{ returntype = "array" } 
+						) 
+					).toBeEmpty();
+					expect( 
+						queryExecute( 
+							"
+							INSERT INTO `content` VALUES (1,'Box-Girl-Swimming-Pool','brisket alcatra shankle pork chop, turducken picanha','Bacon ipsum dolor amet bacon biltong brisket sirloin kielbasa,hock beef landjaeger boudin alcatra,sausage beef beef ribs pancetta pork chop doner short ribs,brisket alcatra shankle pork chop, turducken picanha,Venison doner leberkas turkey ball tip tongue',0,'2011-10-17 12:57:02','2019-05-19 22:42:49','2019-05-19 22:42:49',2),(2,'Library-Brain-Necklace','hock beef landjaeger boudin alcatra','Bacon ipsum dolor amet bacon biltong brisket sirloin kielbasa,hock beef landjaeger boudin alcatra,sausage beef beef ribs pancetta pork chop doner short ribs,brisket alcatra shankle pork chop, turducken picanha,Venison doner leberkas turkey ball tip tongue',0,'2012-09-30 11:12:10','2019-05-19 22:42:49','2019-05-19 22:42:49',2),(3,'God-Finger-Hieroglyph','Bacon ipsum dolor amet bacon biltong brisket sirloin kielbasa','Bacon ipsum dolor amet bacon biltong brisket sirloin kielbasa,hock beef landjaeger boudin alcatra,sausage beef beef ribs pancetta pork chop doner short ribs,brisket alcatra shankle pork chop, turducken picanha,Venison doner leberkas turkey ball tip tongue',1,'2015-06-15 11:09:44','2019-05-19 22:42:49','2019-05-19 22:42:49',9),(4,'Brain-Teeth-Crystal','hock beef landjaeger boudin alcatra','Bacon ipsum dolor amet bacon biltong brisket sirloin kielbasa,hock beef landjaeger boudin alcatra,sausage beef beef ribs pancetta pork chop doner short ribs,brisket alcatra shankle pork chop, turducken picanha,Venison doner leberkas turkey ball tip tongue',1,'2018-06-18 07:44:08','2019-05-19 22:42:49','2019-05-19 22:42:49',6),(5,'Floodlight-Hieroglyph-Parachute','Bacon ipsum dolor amet bacon biltong brisket sirloin kielbasa','Bacon ipsum dolor amet bacon biltong brisket sirloin kielbasa,hock beef landjaeger boudin alcatra,sausage beef beef ribs pancetta pork chop doner short ribs,brisket alcatra shankle pork chop, turducken picanha,Venison doner leberkas turkey ball tip tongue',1,'2016-03-23 08:30:48','2019-05-19 22:42:49','2019-05-19 22:42:49',5),(6,'Flower-Tapestry-Shop','Venison doner leberkas turkey ball tip tongue','Bacon ipsum dolor amet bacon biltong brisket sirloin kielbasa,hock beef landjaeger boudin alcatra,sausage beef beef ribs pancetta pork chop doner short ribs,brisket alcatra shankle pork chop, turducken picanha,Venison doner leberkas turkey ball tip tongue',0,'2018-05-20 05:57:20','2019-05-19 22:42:49','2019-05-19 22:42:49',2),(7,'Knife-Film-Surveyor','Venison doner leberkas turkey ball tip tongue','Bacon ipsum dolor amet bacon biltong brisket sirloin kielbasa,hock beef landjaeger boudin alcatra,sausage beef beef ribs pancetta pork chop doner short ribs,brisket alcatra shankle pork chop, turducken picanha,Venison doner leberkas turkey ball tip tongue',1,'2012-05-04 01:16:55','2019-05-19 22:42:49','2019-05-19 22:42:49',6),(8,'PaintBrush-Sword-Gloves','Venison doner leberkas turkey ball tip tongue','Bacon ipsum dolor amet bacon biltong brisket sirloin kielbasa,hock beef landjaeger boudin alcatra,sausage beef beef ribs pancetta pork chop doner short ribs,brisket alcatra shankle pork chop, turducken picanha,Venison doner leberkas turkey ball tip tongue',1,'2011-08-10 07:01:25','2019-05-19 22:42:49','2019-05-19 22:42:49',4),(9,'Spoon-School-Staircase','sausage beef beef ribs pancetta pork chop doner short ribs','Bacon ipsum dolor amet bacon biltong brisket sirloin kielbasa,hock beef landjaeger boudin alcatra,sausage beef beef ribs pancetta pork chop doner short ribs,brisket alcatra shankle pork chop, turducken picanha,Venison doner leberkas turkey ball tip tongue',0,'2016-09-29 08:14:12','2019-05-19 22:42:49','2019-05-19 22:42:49',10),(10,'Record-Slave-Crystal','sausage beef beef ribs pancetta pork chop doner short ribs','Bacon ipsum dolor amet bacon biltong brisket sirloin kielbasa,hock beef landjaeger boudin alcatra,sausage beef beef ribs pancetta pork chop doner short ribs,brisket alcatra shankle pork chop, turducken picanha,Venison doner leberkas turkey ball tip tongue',1,'2010-08-18 09:09:16','2019-05-19 22:42:49','2019-05-19 22:42:49',4);
+							"
+						) 
+					).toBeEmpy();
+		
+				});
+			});	
+		});*/
 		reset();
-		super.beforeAll();
+		//super.beforeAll();
 		// do your own stuff here
 	}
 
 	function afterAll(){
-		// do your own stuff here
+		/*story("Quiero eliminar la data para pruebas", function(){
+			queryExecute( 
+				"
+				DELETE FROM content WHERE id > 0 and id < 11;
+                "
+			) 
+		});*/
 		super.afterAll();
 	}
 
@@ -57,23 +84,34 @@ component extends="tests.resources.BaseIntegrationSpec" {
 				expect( response.getData().slug ).toBe( testSlug );
 			});
 
-			xit( "crear un nuevo contenido", function(){
-				var event = execute( event="content.create", renderResults=true );
-				// expectations go here.
-				expect( false ).toBeTrue();
+			it( "puedo borrar un contenido", function(){
 			});
 
-			xit( "editar un contenido", function(){
+			it( "crear un nuevo contenido", function(){
+				var event = post("/content", {
+					'id'                    = '50',
+					'slug'					= 'prueba1',
+					'title'                	= 'title slug jkkj',
+					'body'            	    = 'body slug kjjkh'
+			    } );
+			
+				var response = event.getPrivateValue( "Response" );
+				//writeDump(response); abort;
+				expect( response.getError()).toBeFalse();
+				expect( response.getData()).toBeNumeric();
+			});
+
+			/*it( "editar un contenido", function(){
 				var event = execute( event="content.update", renderResults=true );
 				// expectations go here.
 				expect( false ).toBeTrue();
-			});
+			});*/
 
-			xit( "puedo borrar un contenido", function(){
+			/*it( "puedo borrar un contenido", function(){
 				var event = execute( event="content.delete", renderResults=true );
 				// expectations go here.
 				expect( false ).toBeTrue();
-			});
+			});*/
 
 		
 		});

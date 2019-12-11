@@ -4,16 +4,19 @@
 /**
 * I am a new Model Object
 */
-component accessors="true"{
-	
+component accessors="true" persistent="true" table="users"{
+	 
+	// Primary Key
+	 property name="id" fieldtype="id" column="id" generator="native" setter="true";
+
 	// Properties
-	property name="id"           type="string";
-	property name="name"         type="string";
-	property name="email"        type="string";
-	property name="username"     type="string";
-	property name="password"     type="string";
-	property name="createdDate"  type="date";
-	property name="modifiedDate" type="date";
+	property name="name"         ormtype = "varchar" length ="255" dbdefault="'No default'" notnull="true";
+	property name="email"        ormtype = "varchar" unique="true" length ="255" dbdefault="'No default'" notnull="true";
+	property name="username"     ormtype = "varchar" unique="true" length ="255" dbdefault="'No default'" notnull="true";
+	property name="password"     ormtype = "varchar" length ="255" dbdefault="'No default'" notnull="true";
+	property name="modifiedDate" ormtype = "timestamp" notnull="true" dbdefault=now(); 
+	property name="createdDate"  ormtype = "timestamp" notnull="true" dbdefault=now();  
+
 	
 
 	//formato JSON
@@ -22,13 +25,17 @@ component accessors="true"{
 		neverInclude = [ "password" ]
 	};
 
+	this.constraints = {
+        // Example: age = { required=true, min="18", type="numeric" }
+    };
+
 	/**
 	 * Constructor
 	 */
 	User function init(){
 
 		variables.createdDate = now();
-		variables.modifiedDate = now();
+	    variables.modifiedDate = now();
 		
 		return this;
 	}

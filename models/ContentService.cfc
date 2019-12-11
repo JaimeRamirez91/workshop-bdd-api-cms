@@ -47,5 +47,28 @@ component singleton accessors="true"{
         );
 	}
 
+	/**
+	* create
+	*/
+	function create( content ){
+		
+		queryExecute( 
+			"
+				INSERT INTO `content` VALUES (?, ?, ?, ?, 0, CURRENT_TIMESTAMP,CURRENT_TIMESTAMP,CURRENT_TIMESTAMP,?)
+			",
+			[
+				arguments.content.getId(),
+				arguments.content.getSlug(),
+				arguments.content.getTitle(),
+				arguments.content.getBody(),
+				arguments.content.getUser()
+		  
+			],
+			{
+				result : "local.result"
+			}
+		);
+    	return result.generatedKey;
+	}
 
 }
